@@ -10,7 +10,6 @@ namespace MemoryEditing
     {
         private string SpeedAddr = "Minecraft.Windows.exe+041942E8,128,240,D8,E8,DBC";
         private string ReachAddr = "Minecraft.Windows.exe+32027E0";
-        private string RapidAddr = "Minecraft.Windows.exe+03A5AF1C,A30,0,84,14C,560";
 
         public void write_speed(Mem mem, string value)
         {
@@ -20,16 +19,6 @@ namespace MemoryEditing
         {
             mem.WriteMemory(ReachAddr, "float", value);
         }
-        public void write_rapid(Mem mem)
-        {
-            while (true)
-            {
-                mem.WriteMemory(RapidAddr, "byte", "0");
-            }
-            
-        }
-        public void revert(Mem mem)
-        {
             mem.WriteMemory(SpeedAddr, "float", "0.1000000015");
             mem.WriteMemory(ReachAddr, "float", "3.0000000");
         }
@@ -67,7 +56,7 @@ namespace Project
 
             while (true)
             {
-                string output = "Mercury>";
+                string output = "cmd>";
                 Console.Write(output);
                 string input = Console.ReadLine();
                 input = input.ToLower();
@@ -88,11 +77,6 @@ namespace Project
                 {
                     string value = input.Substring(6);
                     hook.write_speed(mem, value);
-                }
-                else if (input.Contains("rapid enable"))
-                {
-                    hook.write_rapid(mem);
-                    
                 }
                 else if (input.Contains("revert"))
                 {
