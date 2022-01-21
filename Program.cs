@@ -19,6 +19,8 @@ namespace MemoryEditing
         {
             mem.WriteMemory(ReachAddr, "float", value);
         }
+        public void revert(Mem mem)
+        {
             mem.WriteMemory(SpeedAddr, "float", "0.1000000015");
             mem.WriteMemory(ReachAddr, "float", "3.0000000");
         }
